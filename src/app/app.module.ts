@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
+import { GenderPipe } from './gender.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    GenderPipe
   ],
   imports: [
     BrowserModule,
