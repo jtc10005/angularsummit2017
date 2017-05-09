@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { GenderPipe } from './gender.pipe';
+import { PersonService } from './person.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { GenderPipe } from './gender.pipe';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

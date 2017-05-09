@@ -2,9 +2,10 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import {HttpModule} from '@angular/http';
-import {TestComponent} from './test/test.component';
-import {GenderPipe} from './gender.pipe';
+import { HttpModule } from '@angular/http';
+import { TestComponent } from './test/test.component';
+import { GenderPipe } from './gender.pipe';
+import { PersonService } from './person.service';
 
 describe('App: PeopleProject', () => {
   beforeEach(() => {
@@ -16,7 +17,8 @@ describe('App: PeopleProject', () => {
       ],
       imports: [
         HttpModule
-      ]
+      ],
+      providers: [PersonService]
     });
   });
 

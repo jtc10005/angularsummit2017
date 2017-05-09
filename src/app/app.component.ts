@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Http} from '@angular/http';
-import 'rxjs/Rx'; // For methods for Observables
+import { PersonService } from './person.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,21 +8,19 @@ import 'rxjs/Rx'; // For methods for Observables
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  server = 'http://localhost:8081';
+
   people = [];
 
-  constructor(private https: Http) {
+  constructor(private ps: PersonService) {
   }
 
   checkSearch(term) {
     if (term.length < 2) {
       this.people = [];
     } else {
-      this.https.get(this.server + '/people/' + term)
-        .map((res) => res.json())
-        .subscribe((response) => {
-          this.people = response.people;
-        });
+      this.ps.getPeople(term).subscribe((response) => {
+        this.people = response.people;
+      });
     }
   }
 }
