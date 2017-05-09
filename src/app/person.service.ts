@@ -10,7 +10,13 @@ export class PersonService {
 
   getPeople(name: string) {
     return this.http.get(this.server + '/people/' + name)
-      .map((res) => res.json());
+      .map((res) => res.json()).map(res => {
+        res.people.forEach(x => {
+          x.birthDate = new Date(x.birthDate);
+        });
+        return res;
+      }
+      );
 
   }
 }

@@ -10,6 +10,7 @@ import { PersonService } from './person.service';
 export class AppComponent {
 
   people = [];
+  LastSorted: string = '';
 
   constructor(private ps: PersonService) {
   }
@@ -21,6 +22,15 @@ export class AppComponent {
       this.ps.getPeople(term).subscribe((response) => {
         this.people = response.people;
       });
+    }
+  }
+
+  sort(field: string) {
+    if (this.LastSorted === field) {
+      this.people.reverse();
+    } else {
+      this.LastSorted = field;
+      this.people.sort((x, y) => { return +(x[field] <= y[field]) || +(x[field] = y[field]); })
     }
   }
 }
